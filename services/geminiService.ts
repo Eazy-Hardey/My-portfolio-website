@@ -1,0 +1,66 @@
+import { GoogleGenAI } from "@google/genai";
+import type { PortfolioData } from '../types';
+
+if (!process.env.API_KEY) {
+  throw new Error("API_KEY environment variable is not set.");
+}
+
+const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
+export const generateCoverLetter = async (jobDescription: string, portfolioData: PortfolioData): Promise<string> => {
+  const { name, title, bio, skills, otherSkills, projects, experience, education } = portfolioData;
+
+  const portfolioSummary = `
+    My name is ${name}, and my professional background covers: ${title}.
+    Bio: ${bio}
+    
+    My Core Technical Skills:
+    ${skills.map(skill => `- ${skill.name}`).join('\n')}
+
+    My Professional & Other Skills:
+    ${otherSkills.map(skill => `- ${skill}`).join('\n')}
+
+    My Key Projects:
+    ${projects.map(p => `- ${p.title}: ${p.description}`).join('\n')}
+
+    My Work Experience:
+    ${experience.map(e => `- ${e.role} at ${e.company} (${e.period}): ${e.description}`).join('\n')}
+    
+    My Education:
+    ${education.map(e => `- ${e.degree} from ${e.institution} (${e.period}): ${e.description}`).join('\n')}
+  `;
+
+  const prompt = `
+    Based on my professional portfolio summary below, please write a concise, professional, and compelling cover letter snippet (2-3 paragraphs) for the following job description.
+    Your tone should be confident but not arrogant.
+    Highlight how my skills and experience, particularly in software engineering, public administration, and human capital development, align with the requirements in the job description.
+    Do not invent any new skills or experiences.
+    End with a strong closing statement about my enthusiasm for the role.
+
+    ---
+    My Portfolio Summary:
+    ${portfolioSummary}
+    ---
+    Job Description:
+    ${jobDescription}
+    ---
+  `;
+
+  try {
+    const response = await ai.models.generateContent({
+      model: 'gemini-2.5-flash',
+      contents: prompt,
+      config: {
+        temperature: 0.5,
+      },
+    });
+
+    return response.text;
+  } catch (error) {
+    console.error("Error generating cover letter with Gemini API:", error);
+    if (error instanceof Error) {
+        return `An error occurred while generating the cover letter. Please check the console for details. Details: ${error.message}`;
+    }
+    return "An unknown error occurred while generating the cover letter.";
+  }
+};
