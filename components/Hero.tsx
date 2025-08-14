@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { PortfolioData } from '../types';
 import { GitHubIcon, LinkedInIcon, InstagramIcon, XIcon, WhatsAppIcon, CameraIcon } from './Icons';
+import ReactCrop, { type Crop, centerCrop, makeAspectCrop } from 'react-image-crop';
 
 interface HeroProps {
   data: PortfolioData;
@@ -12,8 +13,17 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedRole, setDisplayedRole] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  
   const [profileImageUrl, setProfileImageUrl] = useState('https://picsum.photos/seed/ezekiel-odewande/200/200');
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // State for cropping modal
+  const [upImg, setUpImg] = useState<string>('');
+  const imgRef = useRef<HTMLImageElement>(null);
+  const [crop, setCrop] = useState<Crop>();
+  const [completedCrop, setCompletedCrop] = useState<Crop>();
+  const [isCropModalOpen, setIsCropModalOpen] = useState(false);
+
 
   useEffect(() => {
     const savedImage = localStorage.getItem('profileImage');
@@ -122,21 +132,75 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
     URL.revokeObjectURL(url);
   };
   
-  const handleImageUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0];
-    if (file) {
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files.length > 0) {
+      setCrop(undefined); // Reset crop state
       const reader = new FileReader();
-      reader.onloadend = () => {
-        const result = reader.result as string;
-        setProfileImageUrl(result);
-        localStorage.setItem('profileImage', result);
-      };
-      reader.readAsDataURL(file);
+      reader.addEventListener('load', () => {
+        setUpImg(reader.result?.toString() || '');
+        setIsCropModalOpen(true);
+      });
+      reader.readAsDataURL(e.target.files[0]);
+      e.target.value = ''; // Reset the input
     }
   };
 
   const triggerFileUpload = () => {
     fileInputRef.current?.click();
+  };
+
+  function onImageLoad(e: React.SyntheticEvent<HTMLImageElement>) {
+    const { width, height } = e.currentTarget;
+    const newCrop = centerCrop(
+      makeAspectCrop({ unit: '%', width: 90 }, 1, width, height),
+      width,
+      height
+    );
+    setCrop(newCrop);
+  }
+
+  const handleSaveCrop = () => {
+    const image = imgRef.current;
+    if (!image || !completedCrop) {
+      return;
+    }
+
+    const canvas = document.createElement('canvas');
+    const scaleX = image.naturalWidth / image.width;
+    const scaleY = image.naturalHeight / image.height;
+    
+    canvas.width = completedCrop.width * scaleX;
+    canvas.height = completedCrop.height * scaleY;
+    
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      return;
+    }
+
+    ctx.drawImage(
+      image,
+      completedCrop.x * scaleX,
+      completedCrop.y * scaleY,
+      completedCrop.width * scaleX,
+      completedCrop.height * scaleY,
+      0,
+      0,
+      canvas.width,
+      canvas.height
+    );
+
+    const base64Image = canvas.toDataURL('image/jpeg');
+    setProfileImageUrl(base64Image);
+    localStorage.setItem('profileImage', base64Image);
+    
+    // Cleanup
+    setIsCropModalOpen(false);
+    setUpImg('');
+  };
+
+  const handleCancelCrop = () => {
+    setIsCropModalOpen(false);
+    setUpImg('');
   };
 
 
@@ -226,6 +290,39 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
           </div>
         </a>
       </div>
+
+      {isCropModalOpen && (
+        <div className="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] backdrop-blur-sm" role="dialog" aria-modal="true">
+          <div className="bg-slate-900 p-4 sm:p-6 rounded-2xl shadow-2xl w-full max-w-md mx-4 border border-slate-700">
+            <h3 className="text-xl font-bold text-white mb-4 text-center">Crop Your Picture</h3>
+            {upImg && (
+              <div className="flex justify-center">
+                <ReactCrop
+                  crop={crop}
+                  onChange={(_, percentCrop) => setCrop(percentCrop)}
+                  onComplete={(c) => setCompletedCrop(c)}
+                  aspect={1}
+                  minWidth={100}
+                  minHeight={100}
+                  circularCrop
+                >
+                  <img
+                    ref={imgRef}
+                    alt="Crop preview"
+                    src={upImg}
+                    onLoad={onImageLoad}
+                    className="max-h-[60vh] object-contain"
+                  />
+                </ReactCrop>
+              </div>
+            )}
+            <div className="flex justify-end gap-4 mt-6">
+              <button onClick={handleCancelCrop} className="px-5 py-2 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition-colors font-semibold">Cancel</button>
+              <button onClick={handleSaveCrop} className="px-5 py-2 bg-violet-600 text-white rounded-lg hover:bg-violet-700 transition-colors font-semibold">Save Image</button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
