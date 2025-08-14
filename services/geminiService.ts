@@ -1,13 +1,18 @@
 import { GoogleGenAI } from "@google/genai";
 import type { PortfolioData } from '../types';
 
-if (!process.env.API_KEY) {
-  throw new Error("API_KEY environment variable is not set.");
-}
-
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export const generateCoverLetter = async (jobDescription: string, portfolioData: PortfolioData): Promise<string> => {
+  // Lazily check for the API key to prevent a crash on page load.
+  // In a production environment like Netlify, environment variables must be exposed to the client-side
+  // via a build process. This check prevents a ReferenceError if `process` is not defined.
+  if (typeof process === 'undefined' || !process.env.API_KEY) {
+    const errorMessage = "Configuration Error: The AI Assistant is not set up correctly. An API key is required and must be made available to the application during a build process.";
+    console.error(errorMessage);
+    return errorMessage;
+  }
+
+  const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+
   const { name, title, bio, skills, otherSkills, projects, experience, education } = portfolioData;
 
   const portfolioSummary = `
