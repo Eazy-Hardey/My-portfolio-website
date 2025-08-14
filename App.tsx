@@ -8,6 +8,7 @@ import Projects from './components/Projects';
 import AICoverLetter from './components/AICoverLetter';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
+import ScrollToTopButton from './components/ScrollToTopButton';
 import { PORTFOLIO_DATA } from './constants';
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
         <Contact data={PORTFOLIO_DATA} />
       </main>
       <Footer data={PORTFOLIO_DATA}/>
+      <ScrollToTopButton />
     </div>
   );
 };

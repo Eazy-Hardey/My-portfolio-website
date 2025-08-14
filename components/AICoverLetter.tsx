@@ -8,6 +8,22 @@ interface AICoverLetterProps {
   data: PortfolioData;
 }
 
+const LetterSkeleton = () => (
+    <div className="mt-8 text-left bg-slate-900/50 p-6 rounded-xl border border-slate-800/80 animate-pulse">
+      <div className="flex justify-between items-center mb-4">
+        <div className="h-6 bg-slate-700 rounded w-1/3"></div>
+        <div className="h-8 bg-slate-700 rounded w-20"></div>
+      </div>
+      <div className="space-y-3 bg-slate-900 p-4 rounded-md border border-slate-800">
+        <div className="h-4 bg-slate-700 rounded"></div>
+        <div className="h-4 bg-slate-700 rounded w-5/6"></div>
+        <div className="h-4 bg-slate-700 rounded"></div>
+        <div className="h-4 bg-slate-700 rounded w-1/2"></div>
+        <div className="h-4 bg-slate-700 rounded w-4/5"></div>
+      </div>
+    </div>
+);
+
 const AICoverLetter: React.FC<AICoverLetterProps> = ({ data }) => {
   const [jobDescription, setJobDescription] = useState('');
   const [generatedLetter, setGeneratedLetter] = useState('');
@@ -83,7 +99,9 @@ const AICoverLetter: React.FC<AICoverLetterProps> = ({ data }) => {
           {error && <p className="mt-4 text-red-400">{error}</p>}
         </div>
         
-        {generatedLetter && (
+        {isLoading && <LetterSkeleton />}
+        
+        {!isLoading && generatedLetter && (
           <div className="mt-8 text-left bg-slate-900/50 p-6 rounded-xl border border-slate-800/80 relative transition-opacity duration-500">
             <div className="flex justify-between items-center mb-4">
               <h4 className="text-xl font-bold text-slate-100">Generated Snippet:</h4>

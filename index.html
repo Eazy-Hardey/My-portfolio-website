@@ -34,7 +34,7 @@
                     radial-gradient(circle at 80% 35%, rgba(139, 92, 246, 0.15), transparent 30%),
                     radial-gradient(circle at 50% 80%, rgba(217, 70, 239, 0.1), transparent 30%);
         background-color: #0a0a0f;
-        animation: subtle-gradient-move 30s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
+        animation: subtle-gradient-move 40s cubic-bezier(0.45, 0, 0.55, 1) infinite alternate;
         will-change: transform;
       }
       
@@ -43,7 +43,7 @@
           transform: scale(1) translate(0, 0) rotate(0deg);
         }
         100% {
-          transform: scale(1.5) translate(10vw, -15vh) rotate(180deg);
+          transform: scale(1.8) translate(15vw, -20vh) rotate(360deg);
         }
       }
 
@@ -74,6 +74,17 @@
 
       .ReactCrop__crop-selection {
         border: 2px dashed rgba(255, 255, 255, 0.7);
+      }
+      
+      /* Custom focus-visible styles for accessibility */
+      :focus-visible {
+        outline: 2px solid #8b5cf6 !important;
+        outline-offset: 2px;
+        border-radius: 4px;
+      }
+      /* Remove default outline from elements that have custom focus rings via tailwind */
+      .focus\:ring-2:focus-visible, .focus\:ring-violet-500:focus-visible {
+        outline: none !important;
       }
     </style>
   <script type="importmap">
