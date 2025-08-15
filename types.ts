@@ -45,6 +45,7 @@ export interface PortfolioData {
   name:string;
   title: string;
   bio: string;
+  profileImageUrl: string;
   skills: Skill[];
   otherSkills: string[];
   projects: Project[];
