@@ -12,6 +12,7 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedRole, setDisplayedRole] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [imgSrc, setImgSrc] = useState(profileImageUrl);
 
   useEffect(() => {
     const handleTyping = () => {
@@ -36,6 +37,40 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
 
     return () => clearTimeout(timer);
   }, [displayedRole, isDeleting, roles, currentRoleIndex]);
+
+  useEffect(() => {
+    setImgSrc(profileImageUrl);
+  }, [profileImageUrl]);
+
+  const getInitials = (nameStr: string) => {
+    const nameParts = nameStr.split(' ');
+    if (nameParts.length > 1) {
+      return `${nameParts[0][0]}${nameParts[nameParts.length - 1][0]}`.toUpperCase();
+    }
+    return nameStr.substring(0, 2).toUpperCase();
+  };
+
+  const createFallbackSvg = () => {
+    const initials = getInitials(name);
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="256" height="256">
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#7c3aed;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d946ef;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <rect width="100" height="100" rx="50" fill="url(#grad)"></rect>
+        <text x="50" y="50" dominant-baseline="central" text-anchor="middle" font-size="40" fill="white" font-family="sans-serif" font-weight="bold">${initials}</text>
+      </svg>
+    `;
+    return `data:image/svg+xml;base64,${btoa(svg)}`;
+  };
+
+  const handleImageError = () => {
+    setImgSrc(createFallbackSvg());
+  };
+
 
   const handleDownloadCV = () => {
     const cvContent = `
@@ -120,8 +155,9 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
         <div className="text-center p-4">
           <div className="relative inline-block mb-8 group">
             <img
-              src={profileImageUrl}
+              src={imgSrc}
               alt="Profile"
+              onError={handleImageError}
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto border-4 border-slate-800/80 shadow-2xl object-cover"
             />
             <div className="absolute -inset-2 rounded-full border-2 border-dashed border-violet-500/50 animate-spin-slow pointer-events-none"></div>
