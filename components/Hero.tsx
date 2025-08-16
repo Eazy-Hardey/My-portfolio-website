@@ -12,6 +12,39 @@ const Hero: React.FC<HeroProps> = ({ data }) => {
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [displayedRole, setDisplayedRole] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [currentImageUrl, setCurrentImageUrl] = useState(profileImageUrl);
+
+  const getInitials = (name: string) => {
+    const names = name.split(' ');
+    if (names.length > 1) {
+      return `${names[0][0]}${names[names.length - 1][0]}`.toUpperCase();
+    }
+    return name.substring(0, 2).toUpperCase();
+  };
+  
+  useEffect(() => {
+    setCurrentImageUrl(profileImageUrl);
+  }, [profileImageUrl]);
+
+  const handleImageError = () => {
+    const initials = getInitials(name);
+    const svg = `
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="256" height="256">
+        <defs>
+          <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" style="stop-color:#a855f7;stop-opacity:1" />
+            <stop offset="100%" style="stop-color:#d946ef;stop-opacity:1" />
+          </linearGradient>
+        </defs>
+        <circle cx="50" cy="50" r="50" fill="url(#grad)" />
+        <text x="50%" y="50%" dominant-baseline="central" text-anchor="middle" font-size="40" font-family="sans-serif" fill="white" font-weight="bold">${initials}</text>
+      </svg>
+    `;
+    const svgDataUrl = `data:image/svg+xml;base64,${btoa(svg)}`;
+    if (currentImageUrl !== svgDataUrl) {
+      setCurrentImageUrl(svgDataUrl);
+    }
+  };
 
   useEffect(() => {
     const handleTyping = () => {
@@ -120,7 +153,8 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
         <div className="text-center p-4">
           <div className="relative inline-block mb-8 group">
             <img
-              src={profileImageUrl}
+              src={currentImageUrl}
+              onError={handleImageError}
               alt="Profile"
               className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto border-4 border-slate-800/80 shadow-2xl object-cover"
             />
