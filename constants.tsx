@@ -22,7 +22,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   
   // To display your profile picture, please ensure you have a folder named 'assets'
   // in the root of your project, and an image named 'profile.png.png' inside it.
-  profileImageUrl: "/assets/profile.png.png",
+  profileImageUrl: "assets/profile.png.png",
   
   skills: [
     { name: "React", icon: <ReactIcon /> },
