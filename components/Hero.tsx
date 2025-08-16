@@ -117,11 +117,11 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
     <section id="hero" className="min-h-screen flex items-center justify-center text-white relative isolate">
        <div className="absolute inset-0 -z-10 h-full w-full bg-transparent bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
       <div className="text-center p-4">
-        <div className="relative inline-block mb-6">
+        <div className="relative inline-block mb-8">
           <img
             src={profileImageUrl}
             alt="Profile"
-            className="w-40 h-40 md:w-48 md:h-48 rounded-full mx-auto border-4 border-slate-800/80 shadow-2xl object-cover"
+            className="w-48 h-48 md:w-64 md:h-64 rounded-full mx-auto border-4 border-slate-800/80 shadow-2xl object-cover"
           />
           <div className="absolute -inset-2 rounded-full border-2 border-dashed border-violet-500/50 animate-spin-slow pointer-events-none"></div>
         </div>
