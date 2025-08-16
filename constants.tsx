@@ -1,7 +1,6 @@
 import React from 'react';
 import type { PortfolioData, Education, Badge } from './types';
 import { GitHubIcon, GoogleDeveloperIcon, FullStackIcon } from './components/Icons';
-import { PROFILE_IMAGE_BASE64 } from './profileImage';
 
 const ReactIcon = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"></path><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>;
 const JavaScriptIcon = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 128 128" {...props}><rect x="0" y="0" width="128" height="128" fill="#f0db4f"></rect><path fill="#323330" d="M61.34 94.3h-9.83L41.34 76.53l-10.15 17.77H21.36l19.98-34.96L21.36 24.6h9.83l10.17 17.77L51.51 24.6h9.83L41.36 59.34l19.98 34.96zM95.68 93.37c-4.48 0-8.3-1.6-11.45-4.8s-4.72-7.23-4.72-12.08c0-4.85 1.58-8.83 4.72-11.93s7-4.65 11.45-4.65c4.85 0 8.63 1.63 11.35 4.9s4.08 7.35 4.08 12.18c0 4.9-1.4 8.95-4.2 12.15s-6.4 4.8-11.2 4.8zm0-4.35c2.5 0 4.58-1.03 6.23-3.1s2.48-4.7 2.48-7.9c0-3.25-.85-5.9-2.55-7.95s-3.78-3.08-6.15-3.08c-2.4 0-4.43 1-6.1 3s-2.5 4.58-2.5 7.7c0 3.2.83 5.8 2.5 7.8s3.7 3.03 6.1 3.03z"></path></svg>;
@@ -20,7 +19,7 @@ export const PORTFOLIO_DATA: PortfolioData = {
   name: "Ezekiel Adebiyi Odewande",
   title: "Educator, Software engineer, Administrator, Human resource management, Technologist",
   bio: "I am a seasoned public administrator and educator with a strong background in software engineering, cybersecurity, and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training and certifications in HR and security systems. I am passionate about using technology to address societal challenges, particularly in education, governance, and enterprise support.",
-  profileImageUrl: PROFILE_IMAGE_BASE64,
+  profileImageUrl: '/assets/profile.svg',
   skills: [
     { name: "React", icon: <ReactIcon /> },
     { name: "JavaScript", icon: <JavaScriptIcon /> },
