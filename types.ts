@@ -20,6 +20,8 @@ export interface Experience {
   period: string;
   description: string;
   technologies: string[];
+  repoUrl?: string;
+  liveUrl?: string;
 }
 
 export interface Education {
@@ -50,6 +52,7 @@ export interface PortfolioData {
   otherSkills: string[];
   projects: Project[];
   experience: Experience[];
+  otherExperience?: Experience[];
   education: Education[];
   certifications: Certification[];
   badges?: Badge[];

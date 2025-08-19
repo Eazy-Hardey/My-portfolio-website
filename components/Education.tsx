@@ -15,7 +15,11 @@ const Education: React.FC<EducationProps> = ({ data }) => {
       <div className="max-w-4xl mx-auto">
         <div className="relative border-l-2 border-slate-800">
           {education.map((item, index) => (
-            <div key={index} className="mb-10 ml-6 md:ml-10 group">
+            <div 
+              key={index} 
+              className="mb-10 ml-6 md:ml-10 group animate-fade-in-up"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <span className="absolute flex items-center justify-center w-6 h-6 bg-slate-800 rounded-full -left-3.5 ring-8 ring-slate-900 border-2 border-violet-500 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_15px_#8b5cf6]">
                 <GraduationCapIcon className="w-4 h-4 text-violet-400" />
               </span>

@@ -40,34 +40,34 @@ const Contact: React.FC<ContactProps> = ({ data }) => {
                 
                 <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 mt-4">
                     {contact.phone && (
-                        <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors">
-                            <PhoneIcon className="h-5 w-5" />
+                        <a href={`tel:${contact.phone.replace(/\s/g, '')}`} className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1">
+                            <PhoneIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                             <span>{contact.phone}</span>
                         </a>
                     )}
                      {contact.whatsapp && (
-                      <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors" aria-label="WhatsApp">
-                          <WhatsAppIcon className="h-5 w-5" />
+                      <a href={contact.whatsapp} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1" aria-label="WhatsApp">
+                          <WhatsAppIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                           <span>WhatsApp</span>
                       </a>
                     )}
-                    <a href={contact.github} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors" aria-label="GitHub">
-                        <GitHubIcon className="h-5 w-5" />
+                    <a href={contact.github} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1" aria-label="GitHub">
+                        <GitHubIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                         <span>GitHub</span>
                     </a>
-                    <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors" aria-label="LinkedIn">
-                        <LinkedInIcon className="h-5 w-5" />
+                    <a href={contact.linkedin} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1" aria-label="LinkedIn">
+                        <LinkedInIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                         <span>LinkedIn</span>
                     </a>
                     {contact.instagram && (
-                      <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors" aria-label="Instagram">
-                          <InstagramIcon className="h-5 w-5" />
+                      <a href={contact.instagram} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1" aria-label="Instagram">
+                          <InstagramIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                           <span>Instagram</span>
                       </a>
                     )}
                     {contact.x && (
-                      <a href={contact.x} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 hover:text-violet-400 transition-colors" aria-label="X">
-                          <XIcon className="h-5 w-5" />
+                      <a href={contact.x} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 hover:text-violet-400 transition-all duration-300 transform hover:-translate-y-1" aria-label="X">
+                          <XIcon className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" />
                           <span>X</span>
                       </a>
                     )}

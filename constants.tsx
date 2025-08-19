@@ -1,5 +1,5 @@
 import React from 'react';
-import type { PortfolioData, Education, Badge } from './types';
+import type { PortfolioData, Experience } from './types';
 import { GitHubIcon, GoogleDeveloperIcon, FullStackIcon } from './components/Icons';
 
 const ReactIcon = (props: React.SVGProps<SVGSVGElement>) => <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="#61DAFB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}><circle cx="12" cy="12" r="2"></circle><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"></path><path d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path></svg>;
@@ -17,8 +17,10 @@ const CIcon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" viewBox=
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Ezekiel Adebiyi Odewande",
-  title: "Educator, Software engineer, Administrator, Human resource management, Technologist",
-  bio: "I am a seasoned public administrator and educator with a strong background in software engineering, cybersecurity, and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training and certifications in HR and security systems. I am passionate about using technology to address societal challenges, particularly in education, governance, and enterprise support.",
+  title: "Software engineer, Frontend engineer, Fullstack engineer, Administrator, Human resource management, Technologist",
+  bio: `Tech-savvy and results-driven Software Engineer with hands-on experience developing full-stack web applications using 
+JavaScript, React, and Node.js, Wordpress. Delivered responsive, functional, and testable solutions as part of academic 
+and real-world project teams. Strong understanding of APIs, databases, and clean code principles. I am a seasoned public administrator and educator with a strong academic background in public administrarion and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training and certifications in HR and security systems. I am passionate about using technology to address societal challenges and enterprise support.`,
   
   // To display your profile picture, please ensure you have a folder named 'public'
   // in the root of your project, and an image named 'profile.png.png' inside it.
@@ -54,53 +56,121 @@ export const PORTFOLIO_DATA: PortfolioData = {
       title: "MyBaseCamp",
       description: "A project management tool mimicking Basecamp’s features. It includes user registration, session management, role permissions, project management, attachment management, and message management.",
       tags: ["Project Management", "Full-Stack", "Cloud"],
-      imageUrl: "https://picsum.photos/seed/mybasecamp/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Feazy-mybasecamp.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-Basecamp-app",
+      liveUrl: "https://eazy-mybasecamp.netlify.app/",
     },
     {
       title: "My Instagram",
       description: "A clone of Instagram, developed using ReactJS and AWS Amplify for backend services and database storage. The application includes features like user authentication, post interactions, and a responsive UI.",
       tags: ["React", "AWS Amplify", "Full-Stack", "Clone"],
-      imageUrl: "https://picsum.photos/seed/myinstagram/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fmy-instagram-two.vercel.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-Instagram",
+      liveUrl: "https://my-instagram-two.vercel.app/",
     },
     {
       title: "My Yelp",
       description: "A ReactJS application deployed on AWS Amplify, utilizing GraphQL for API calls. This project demonstrates cloud deployment practices and GraphQL integration.",
       tags: ["React", "AWS Amplify", "GraphQL", "Cloud"],
-      imageUrl: "https://picsum.photos/seed/myyelp/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Feazy-myyelp.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-Yelp-app",
+      liveUrl: "https://eazy-myyelp.netlify.app/",
     },
     {
       title: "My Pokemon App",
       description: "A ReactJS-based multi-page application that lists Pokémon with lazy loading, displays detailed Pokémon information, includes a search feature, and handles errors gracefully.",
       tags: ["React", "API", "Frontend"],
-      imageUrl: "https://picsum.photos/seed/mypokemon/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Feazypokemonapp.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-pokemon-app",
+      liveUrl: "https://eazypokemonapp.netlify.app/",
     },
     {
       title: "My Dropbox",
       description: "A functional clone of Dropbox built with React, demonstrating file storage, retrieval, and management functionalities within a clean user interface.",
       tags: ["React", "File Management", "Clone", "Frontend"],
-      imageUrl: "https://picsum.photos/seed/mydropbox/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fvenerable-cupcake-218d00.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-Dropbox",
+      liveUrl: "https://venerable-cupcake-218d00.netlify.app/",
     },
     {
       title: "My Users App",
       description: "A user management application featuring Create, Read, Update, and Delete (CRUD) operations, built to demonstrate core data handling concepts in React.",
       tags: ["React", "CRUD", "Frontend"],
-      imageUrl: "https://picsum.photos/seed/myuserapp/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Feazy-myusers.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-Users-App",
+      liveUrl: "https://eazy-myusers.netlify.app/",
     },
     {
       title: "My ReactJS Calculator",
       description: "A single-route application built with ReactJS that performs arithmetic operations. It includes components for each function and a sleek, user-friendly interface.",
       tags: ["React", "JavaScript", "UI/UX", "Frontend"],
-      imageUrl: "https://picsum.photos/seed/mycalculator/600/400",
+      imageUrl: "https://s.wordpress.com/mshots/v1/https%3A%2F%2Fsensational-torte-561cd1.netlify.app%2F?w=400&h=300",
       repoUrl: "https://github.com/Eazy-Hardey/My-React-Calculator",
+      liveUrl: "https://sensational-torte-561cd1.netlify.app/",
     },
   ],
   experience: [
+    {
+      role: "Technical Trainee – Cybersecurity",
+      company: "3MTT Fellowship — NITDA / Federal Government of Nigeria",
+      period: "June 2024 – Nov 2024",
+      description: "Completed a 6-month hands-on fellowship focused on technical specialization, project delivery, and workplace readiness. Worked on real-world simulations, team-based product builds, and personal portfolio projects with weekly deliverables. Key outcomes include participation in 3+ hands-on lab sessions for tool mastery and structured soft skill sessions covering workplace communication, agile collaboration, and time management.",
+      technologies: ["Cybersecurity", "Project Delivery", "Team Collaboration", "Agile Methodologies"],
+    },
+    {
+      role: "Full-Stack Developer Trainee",
+      company: "Qwasar Silicon Valley",
+      period: "March 2024 — Oct 2024",
+      description: "Completed an 8-month hands-on fellowship focused on technical specialization and project delivery. Worked on real-world team-based product builds and personal portfolio projects. Key outcomes include delivering over 12 end-to-end technical projects (solo and team-based) with full documentation and Git versioning, and engaging in peer reviews to incorporate actionable feedback.",
+      technologies: ["Full-Stack Development", "Project Management", "Git", "Peer Review", "Product Strategy"],
+    },
+    {
+      role: "MyBaseCamp",
+      company: "Personal Project",
+      period: "2024",
+      description: "A project management tool mimicking Basecamp’s features. It includes user registration, session management, role permissions, project management, attachment management, and message management.",
+      technologies: ["Project Management", "Full-Stack", "Cloud"],
+      repoUrl: "https://github.com/Eazy-Hardey/My-Basecamp-app",
+      liveUrl: "https://eazy-mybasecamp.netlify.app/",
+    },
+    {
+      role: "My Instagram",
+      company: "Personal Project",
+      period: "2024",
+      description: "A clone of Instagram, developed using ReactJS and AWS Amplify for backend services and database storage. The application includes features like user authentication, post interactions, and a responsive UI.",
+      technologies: ["React", "AWS Amplify", "Full-Stack", "Clone"],
+      repoUrl: "https://github.com/Eazy-Hardey/My-Instagram",
+      liveUrl: "https://my-instagram-two.vercel.app/",
+    },
+    {
+      role: "My Yelp",
+      company: "Personal Project",
+      period: "2024",
+      description: "A ReactJS application deployed on AWS Amplify, utilizing GraphQL for API calls. This project demonstrates cloud deployment practices and GraphQL integration.",
+      technologies: ["React", "AWS Amplify", "GraphQL", "Cloud"],
+      repoUrl: "https://github.com/Eazy-Hardey/My-Yelp-app",
+      liveUrl: "https://eazy-myyelp.netlify.app/",
+    },
+    {
+      role: "My Pokemon App",
+      company: "Personal Project",
+      period: "2024",
+      description: "A ReactJS-based multi-page application that lists Pokémon with lazy loading, displays detailed Pokémon information, includes a search feature, and handles errors gracefully.",
+      technologies: ["React", "API", "Frontend"],
+      repoUrl: "https://github.com/Eazy-Hardey/My-pokemon-app",
+      liveUrl: "https://eazypokemonapp.netlify.app/",
+    },
+    {
+      role: "My Dropbox",
+      company: "Personal Project",
+      period: "2024",
+      description: "A functional clone of Dropbox built with React, demonstrating file storage, retrieval, and management functionalities within a clean user interface.",
+      technologies: ["React", "File Management", "Clone", "Frontend"],
+      repoUrl: "https://github.com/Eazy-Hardey/My-Dropbox",
+      liveUrl: "https://venerable-cupcake-218d00.netlify.app/",
+    },
+  ],
+  otherExperience: [
     {
       role: "Administrator / School Principal",
       company: "Golden Mission Academy",

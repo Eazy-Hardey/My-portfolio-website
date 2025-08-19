@@ -40,9 +40,9 @@ const Projects: React.FC<ProjectsProps> = ({ data }) => {
           </button>
         ))}
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
         {filteredProjects.map((project, index) => (
-          <ProjectCard key={`${project.title}-${index}`} project={project} />
+          <ProjectCard key={`${project.title}-${index}`} project={project} index={index} />
         ))}
       </div>
     </Section>

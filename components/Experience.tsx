@@ -1,6 +1,7 @@
 import React from 'react';
 import type { PortfolioData } from '../types';
 import Section from './Section';
+import { ExternalLinkIcon, GitHubIcon } from './Icons';
 
 interface ExperienceProps {
   data: PortfolioData;
@@ -10,11 +11,15 @@ const Experience: React.FC<ExperienceProps> = ({ data }) => {
   const { experience } = data;
 
   return (
-    <Section id="experience" title="Professional Experience" className="bg-black/20">
+    <Section id="experience" title="Software Development Experience" className="bg-black/20">
       <div className="max-w-4xl mx-auto">
         <div className="relative border-l-2 border-slate-800">
           {experience.map((job, index) => (
-            <div key={index} className="mb-10 ml-6 md:ml-10 group">
+            <div 
+              key={index} 
+              className="mb-10 ml-6 md:ml-10 group animate-fade-in-up"
+              style={{ animationDelay: `${index * 150}ms` }}
+            >
               <span className="absolute flex items-center justify-center w-6 h-6 bg-slate-800 rounded-full -left-3.5 ring-8 ring-slate-900 border-2 border-violet-500 transition-all duration-300 group-hover:scale-125 group-hover:shadow-[0_0_15px_#8b5cf6]">
                 <svg className="w-3 h-3 text-violet-400" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clipRule="evenodd"></path></svg>
               </span>
@@ -31,6 +36,18 @@ const Experience: React.FC<ExperienceProps> = ({ data }) => {
                       {tech}
                     </span>
                   ))}
+                </div>
+                 <div className="mt-4 pt-4 border-t border-slate-800 flex justify-end items-center gap-4">
+                  {job.repoUrl && (
+                    <a href={job.repoUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-violet-400 transition-transform duration-300 transform hover:scale-110" aria-label="GitHub Repository">
+                      <GitHubIcon className="h-6 w-6" />
+                    </a>
+                  )}
+                  {job.liveUrl && (
+                    <a href={job.liveUrl} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-violet-400 transition-transform duration-300 transform hover:scale-110" aria-label="Live Demo">
+                      <ExternalLinkIcon className="h-6 w-6" />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

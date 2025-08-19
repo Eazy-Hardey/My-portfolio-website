@@ -4,15 +4,23 @@ import { ExternalLinkIcon, GitHubIcon } from './Icons';
 
 interface ProjectCardProps {
   project: Project;
+  index: number;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ project }) => {
+const ProjectCard: React.FC<ProjectCardProps> = ({ project, index }) => {
   const { title, description, tags, imageUrl, liveUrl, repoUrl } = project;
 
   return (
-    <div className="bg-slate-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-slate-800 group flex flex-col h-full transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-600/20 hover:border-violet-500/30">
-      <div className="relative overflow-hidden">
-        <img src={imageUrl} alt={title} className="w-full h-56 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105" />
+    <div 
+      className="bg-slate-900/70 backdrop-blur-sm rounded-xl overflow-hidden shadow-lg border border-slate-800 group flex flex-col h-full transition-all duration-300 transform hover:-translate-y-2 hover:shadow-2xl hover:shadow-violet-600/20 hover:border-violet-500/30 animate-fade-in-up"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <div className="relative overflow-hidden bg-slate-800">
+        <img
+          src={imageUrl}
+          alt={title}
+          className="w-full h-48 object-cover object-top transition-transform duration-500 ease-in-out group-hover:scale-105"
+        />
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
       </div>
       <div className="p-6 flex flex-col flex-grow">

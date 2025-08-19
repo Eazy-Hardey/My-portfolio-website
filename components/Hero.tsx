@@ -6,6 +6,22 @@ interface HeroProps {
   data: PortfolioData;
 }
 
+const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  e.preventDefault();
+  const targetId = href.substring(1);
+  const targetElement = document.getElementById(targetId);
+  if (targetElement) {
+    const headerOffset = 70; // Height of the sticky header
+    const elementPosition = targetElement.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: 'smooth'
+    });
+  }
+};
+
 const Hero: React.FC<HeroProps> = ({ data }) => {
   const { name, title, contact, bio, skills, otherSkills, projects, experience, education, certifications, profileImageUrl } = data;
   const roles = title.split(', ').map(role => role.trim());
@@ -196,6 +212,7 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#projects"
+              onClick={(e) => handleNavClick(e, '#projects')}
               className="group relative inline-flex items-center justify-center px-8 py-3 text-lg font-bold text-white transition-all duration-200 bg-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
             >
              <div className="absolute -inset-px bg-gradient-to-r from-violet-600 to-fuchsia-600 rounded-lg transition-all duration-200 group-hover:shadow-[0_0_1rem_0.1rem_#a855f7] group-hover:-inset-1"></div>
@@ -212,7 +229,7 @@ ${certifications.map(cert => `* **${cert.name}** - *${cert.issuer}*`).join('\n')
           </div>
         </div>
          <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <a href="#about" aria-label="Scroll down">
+          <a href="#about" aria-label="Scroll down" onClick={(e) => handleNavClick(e, '#about')}>
             <div className="w-6 h-10 border-2 rounded-full border-slate-700 flex justify-center items-start p-1 hover:border-violet-500 transition-colors">
               <div className="w-1 h-2 bg-slate-500 rounded-full animate-bounce" style={{animationDuration: '1.5s'}}></div>
             </div>
