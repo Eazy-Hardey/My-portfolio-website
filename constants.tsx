@@ -20,9 +20,9 @@ export const PORTFOLIO_DATA: PortfolioData = {
   title: "Educator, Software engineer, Administrator, Human resource management, Technologist",
   bio: "I am a seasoned public administrator and educator with a strong background in software engineering, cybersecurity, and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training and certifications in HR and security systems. I am passionate about using technology to address societal challenges, particularly in education, governance, and enterprise support.",
   
-  // To display your profile picture, please ensure you have a folder named 'assets'
+  // To display your profile picture, please ensure you have a folder named 'public'
   // in the root of your project, and an image named 'profile.png.png' inside it.
-  profileImageUrl: "assets/profile.png.png",
+  profileImageUrl: "/profile.png.png",
   
   skills: [
     { name: "React", icon: <ReactIcon /> },
