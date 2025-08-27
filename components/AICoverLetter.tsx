@@ -1,4 +1,5 @@
 import React, { useState, useCallback } from 'react';
+import { generateCoverLetter } from '../services/geminiService';
 import type { PortfolioData } from '../types';
 import Section from './Section';
 import { ClipboardIcon, CheckIcon } from './Icons';
@@ -41,18 +42,12 @@ const AICoverLetter: React.FC<AICoverLetterProps> = ({ data }) => {
     setIsCopied(false);
 
     try {
-      // Dynamically import the service only when the button is clicked.
-      // This prevents the AI module from loading on page load and crashing the app.
-      const { generateCoverLetter } = await import('../services/geminiService.ts');
+      // The generateCoverLetter function is now imported statically.
       const result = await generateCoverLetter(jobDescription, data);
       setGeneratedLetter(result);
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'An unexpected error occurred.';
-      if (errorMessage.toLowerCase().includes('failed to fetch dynamically imported module')) {
-        setError("Error: The AI Assistant module failed to load. Please check your network connection and try again.");
-      } else {
-        setError(`Failed to generate cover letter: ${errorMessage}`);
-      }
+      setError(`Failed to generate cover letter: ${errorMessage}`);
     } finally {
       setIsLoading(false);
     }

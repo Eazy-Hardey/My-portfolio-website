@@ -2,12 +2,8 @@ import { GoogleGenAI } from '@google/genai';
 import type { PortfolioData } from '../types';
 
 export const generateCoverLetter = async (jobDescription: string, portfolioData: PortfolioData): Promise<string> => {
-  // First, check for the API key. This is a simple check and doesn't involve network requests.
-  if (typeof process === 'undefined' || !process.env.API_KEY) {
-    const errorMessage = "Configuration Error: The AI Assistant is not set up correctly. An API key is required and must be made available to the application during a build process.";
-    console.error(errorMessage);
-    return errorMessage;
-  }
+  // The check for the API key was removed. It is assumed to be present in the execution environment.
+  // The original check for `typeof process` would fail in a browser and was the cause of the issue.
 
   try {
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
