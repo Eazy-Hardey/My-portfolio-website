@@ -34,6 +34,12 @@ export interface Education {
 export interface Certification {
   name: string;
   issuer: string;
+  certId?: string;
+  date?: string;
+  venue?: string;
+  details?: string;
+  signatories?: string[];
+  isFeatured?: boolean;
 }
 
 export interface Badge {

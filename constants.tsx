@@ -14,13 +14,14 @@ const HerokuIcon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" vie
 const VercelIcon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor" {...props}><title>Vercel</title><path d="M12 1.5l12 21H0L12 1.5z"/></svg>;
 const NetlifyIcon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#00C7B7" {...props}><title>Netlify</title><path d="M12 0L1.706 5.868v12.264L12 24l10.294-5.868V5.868zM3.412 7.15l8.588-4.918 8.588 4.918v9.7l-8.588 4.918-8.588-4.918z"/></svg>;
 const CIcon = (props: React.SVGProps<SVGSVGElement>) => <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="#A8B9CC" {...props}><title>C</title><path d="M16.536 12.56a6.536 6.536 0 11-9.976-5.896 6.536 6.536 0 019.976 5.896zm-1.89-4.224a4.536 4.536 0 10-6.732 4.224 4.536 4.536 0 006.732-4.224z"/></svg>;
+const GlobeIcon = (props: React.SVGProps<SVGSVGElement>) => <svg className="h-8 w-8 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>;
 
 export const PORTFOLIO_DATA: PortfolioData = {
   name: "Ezekiel Adebiyi Odewande",
-  title: "Software engineer, Frontend engineer, Fullstack engineer, Administrator, Human resource management, Technologist",
+  title: "Software Engineer, Frontend Engineer, Fullstack Developer, Public Administrator, Internet Governance Fellow",
   bio: `Tech-savvy and results-driven Software Engineer with hands-on experience developing full-stack web applications using 
-JavaScript, React, and Node.js, Wordpress. Delivered responsive, functional, and testable solutions as part of academic 
-and real-world project teams. Strong understanding of APIs, databases, and clean code principles. I am a seasoned public administrator and educator with a strong academic background in public administrarion and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training and certifications in HR and security systems. I am passionate about using technology to address societal challenges and enterprise support.`,
+JavaScript, React, Node.js, and WordPress. Delivered responsive, functional, and testable solutions as part of academic 
+and real-world project teams. Strong understanding of APIs, databases, and clean code principles. I am a seasoned public administrator, educator, and NSIG Internet Governance Fellow with a strong academic background in public administration and human resource management. I’ve served as a school principal, IT systems installer, and developer, blending administrative leadership with hands-on tech experience. My academic foundation in public administration is complemented by cutting-edge tech training, Internet Governance fellowship, and certifications in HR and security systems. I am passionate about using technology and policy to address societal challenges and enterprise support.`,
   
   // To display your profile picture, please ensure you have a folder named 'public'
   // in the root of your project, and an image named 'profile.png.png' inside it.
@@ -41,6 +42,7 @@ and real-world project teams. Strong understanding of APIs, databases, and clean
     { name: "Human Capital", icon: <HumanCapitalIcon /> },
   ],
   otherSkills: [
+    "Internet Governance & Digital Policy",
     "Public Speaking",
     "Leadership Development",
     "Consultancy Service",
@@ -110,6 +112,13 @@ and real-world project teams. Strong understanding of APIs, databases, and clean
     },
   ],
   experience: [
+    {
+      role: "NSIG Fellow – Internet Governance",
+      company: "Internet Society Nigeria Chapter & NIGF MAG",
+      period: "Nov 23rd – 26th, 2025",
+      description: "Successfully participated in the 2025 Edition of the Nigerian School on Internet Governance (NSIG) at the NITDA E-Government Training Center, PSIN, Abuja (Certificate ID: NSIG/2025/0076). Engaged in intensive multi-stakeholder sessions covering internet policy, governance models, cybersecurity regulation, digital rights, and infrastructure.",
+      technologies: ["Internet Governance", "Digital Policy", "Cybersecurity", "Multi-Stakeholder Advisory", "Public Administration"],
+    },
     {
       role: "Technical Trainee – Cybersecurity",
       company: "3MTT Fellowship — NITDA / Federal Government of Nigeria",
@@ -207,6 +216,19 @@ and real-world project teams. Strong understanding of APIs, databases, and clean
     },
   ],
   certifications: [
+    { 
+      name: "Fellowship Certificate – Nigerian School on Internet Governance (NSIG 2025)", 
+      issuer: "Internet Society Nigeria Chapter & NIGF MAG",
+      certId: "NSIG/2025/0076",
+      date: "23rd – 26th November, 2025",
+      venue: "NITDA E-Government Training Center, Public Service Institute of Nigeria (PSIN), Kubwa Expressway, Abuja, FCT-Nigeria",
+      details: "Successfully participated in the 2025 Edition of the Nigerian School on Internet Governance (NSIG). Intensive fellowship covering multi-stakeholder internet governance, cybersecurity frameworks, digital economy policy, and internet ecosystem development.",
+      signatories: [
+        "Dimie Shively Warowei, PhD — Chairman, Nigeria Internet Governance Forum (NIGF) Multi-Stakeholder Advisory Group (MAG)",
+        "Engr. Kunle Olorundare, SMIEEE — Coordinator, NSIG; President, Internet Society Nigeria Chapter"
+      ],
+      isFeatured: true
+    },
     { name: "Youthrive Tech Product Management Graduate", issuer: "Youthrive (2025)" },
     { name: "Qwasar Full-Stack Developer Training Graduate", issuer: "Qwasar (2024)" },
     { name: "Professional Foundation", issuer: "ALX (2024)" },
@@ -219,6 +241,12 @@ and real-world project teams. Strong understanding of APIs, databases, and clean
     { name: "System Security Maintenance and Installation(CCTV, IP-CCTV, GPS, OBD II, PBX)", issuer: "BugoTake Technologies (2019)" },
   ],
   badges: [
+    {
+      name: "NSIG 2025 Fellow",
+      issuer: "Internet Society Nigeria Chapter",
+      icon: <GlobeIcon />,
+      url: "#about",
+    },
     {
       name: "Google Developer Profile",
       issuer: "Google",
